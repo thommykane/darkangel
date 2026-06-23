@@ -17,7 +17,7 @@ export default function Sidebar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 bg-black/20 backdrop-blur-[2px]"
+            className="fixed inset-0 z-50 bg-black/40 backdrop-blur-[2px]"
             onClick={close}
             aria-hidden="true"
           />
@@ -27,18 +27,18 @@ export default function Sidebar() {
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
             transition={{ type: "tween", duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed left-0 top-0 z-50 flex h-full w-[min(320px,85vw)] flex-col bg-white shadow-2xl"
+            className="fixed left-0 top-0 z-50 flex h-full w-[min(320px,85vw)] flex-col bg-black shadow-2xl"
             role="dialog"
             aria-modal="true"
             aria-label="Navigation menu"
           >
-            <div className="flex items-center justify-between border-b border-border px-6 py-6">
-              <span className="font-serif text-lg tracking-wide">Menu</span>
+            <div className="flex items-center justify-between border-b border-white/10 px-6 py-6">
+              <span className="font-serif text-lg tracking-wide text-white">Menu</span>
               <button
                 type="button"
                 onClick={close}
                 aria-label="Close menu"
-                className="flex h-10 w-10 items-center justify-center text-2xl font-light transition-opacity hover:opacity-50"
+                className="flex h-10 w-10 items-center justify-center text-2xl font-light text-white transition-opacity hover:opacity-50"
               >
                 ×
               </button>
@@ -56,7 +56,7 @@ export default function Sidebar() {
                     <Link
                       href={link.href}
                       onClick={close}
-                      className="block border-b border-transparent py-4 text-sm font-medium uppercase tracking-[0.18em] text-black transition-colors hover:text-secondary"
+                      className="block border-b border-transparent py-4 text-sm font-medium uppercase tracking-[0.18em] text-white transition-colors hover:text-white/70"
                     >
                       {link.label}
                     </Link>
@@ -65,8 +65,8 @@ export default function Sidebar() {
               </ul>
             </nav>
 
-            <div className="border-t border-border px-6 py-6">
-              <p className="text-[10px] uppercase tracking-[0.2em] text-secondary">
+            <div className="border-t border-white/10 px-6 py-6">
+              <p className="text-[10px] uppercase tracking-[0.2em] text-white/70">
                 Minimal Luxury. Maximum Presence.
               </p>
             </div>
