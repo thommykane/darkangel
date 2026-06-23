@@ -31,8 +31,8 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
           className="mx-auto mt-8 max-w-lg space-y-2 text-sm font-light tracking-wide text-secondary sm:text-base md:text-lg"
         >
-          <p>Pretty Rebellion</p>
-          <p>A Strength That&apos;s Soft. A Confidence That&apos;s Quiet.</p>
+          <p>Pretty rebellion</p>
+          <p>A strength that&apos;s soft. A confidence that&apos;s quiet.</p>
         </motion.div>
 
         <motion.div
