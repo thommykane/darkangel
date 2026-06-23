@@ -24,7 +24,7 @@ export default function AboutContent() {
         </h1>
       </motion.header>
 
-      <div className="space-y-10 text-base leading-relaxed text-secondary sm:text-lg sm:leading-relaxed">
+      <div className="space-y-4 text-base leading-relaxed text-secondary sm:text-lg sm:leading-relaxed">
         <motion.p {...fadeUp}>
           Dark Angel was created for the girls who never quite fit into the
           mold.
@@ -36,11 +36,11 @@ export default function AboutContent() {
           <p>The girls who crave quiet in a world that never stops talking.</p>
         </motion.div>
 
-        <motion.div {...fadeUp} className="space-y-4 border-y border-border py-10">
+        <motion.div {...fadeUp} className="space-y-4">
           <p>We believe strength can be soft.</p>
           <p>That confidence doesn&apos;t need to be loud.</p>
           <p>
-            That wellness isn&apos;t about becoming someone else—it&apos;s about
+            That wellness isn&apos;t about becoming someone else. It&apos;s about
             coming home to yourself.
           </p>
         </motion.div>
@@ -59,7 +59,7 @@ export default function AboutContent() {
 
         <motion.div
           {...fadeUp}
-          className="space-y-4 pt-6 text-center"
+          className="space-y-4 pt-4 text-center"
         >
           <p className="font-serif text-xl tracking-wide text-black sm:text-2xl">
             This is athleisure for the beautifully complicated.
