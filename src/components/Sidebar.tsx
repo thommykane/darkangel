@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { sidebarLinks } from "@/lib/constants";
+import { navLinks } from "@/lib/constants";
 import { useSidebar } from "./SidebarContext";
 
 export default function Sidebar() {
@@ -62,7 +62,7 @@ export default function Sidebar() {
 
             <nav className="flex-1 overflow-y-auto px-6 py-8">
               <ul className="space-y-1">
-                {sidebarLinks.map((link, index) => (
+                {navLinks.map((link, index) => (
                   <motion.li
                     key={link.label}
                     initial={{ opacity: 0, x: -16 }}
