@@ -6,33 +6,34 @@ import { motion } from "framer-motion";
 export default function Hero() {
   return (
     <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden bg-white px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-5xl text-center">
+      <div className="mx-auto max-w-6xl text-center">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-6 text-[10px] font-medium uppercase tracking-[0.35em] text-secondary sm:text-xs"
         >
-          Dark Angel Clothing
+          Welcome to
         </motion.p>
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
-          className="font-serif text-5xl font-normal leading-[0.95] tracking-[0.08em] text-black sm:text-7xl md:text-8xl lg:text-9xl"
+          className="whitespace-nowrap font-serif text-[clamp(1.75rem,6vw,5.5rem)] font-normal leading-[0.95] tracking-[0.06em] text-black"
         >
-          DARK ANGEL
+          DARK ANGEL CLOTHING
         </motion.h1>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
-          className="mx-auto mt-8 max-w-md text-sm font-light tracking-wide text-secondary sm:text-base md:text-lg"
+          className="mx-auto mt-8 max-w-lg space-y-2 text-sm font-light tracking-wide text-secondary sm:text-base md:text-lg"
         >
-          Minimal Luxury. Maximum Presence.
-        </motion.p>
+          <p>Pretty Rebellion</p>
+          <p>A Strength that&apos;s Soft. A Confidence that&apos;s Quiet.</p>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
