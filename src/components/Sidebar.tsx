@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { sidebarLinks } from "@/lib/constants";
@@ -32,16 +33,31 @@ export default function Sidebar() {
             aria-modal="true"
             aria-label="Navigation menu"
           >
-            <div className="flex items-center justify-between border-b border-white/10 px-6 py-6">
-              <span className="font-serif text-lg tracking-wide text-white">Menu</span>
+            <div className="relative border-b border-white/10 px-6 py-8">
               <button
                 type="button"
                 onClick={close}
                 aria-label="Close menu"
-                className="flex h-10 w-10 items-center justify-center text-2xl font-light text-white transition-opacity hover:opacity-50"
+                className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center text-2xl font-light text-white transition-opacity hover:opacity-50"
               >
                 ×
               </button>
+
+              <Link
+                href="/"
+                onClick={close}
+                className="mx-auto block w-fit"
+              >
+                <div className="relative flex h-[125px] w-[125px] items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white">
+                  <Image
+                    src="/logo/darklogospade.jpg"
+                    alt="Dark Angel Clothing"
+                    fill
+                    sizes="125px"
+                    className="object-contain object-center p-5"
+                  />
+                </div>
+              </Link>
             </div>
 
             <nav className="flex-1 overflow-y-auto px-6 py-8">
