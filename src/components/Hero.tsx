@@ -32,7 +32,7 @@ export default function Hero() {
           className="mx-auto mt-8 max-w-lg space-y-2 text-sm font-light tracking-wide text-secondary sm:text-base md:text-lg"
         >
           <p>Pretty Rebellion</p>
-          <p>A Strength that&apos;s Soft. A Confidence that&apos;s Quiet.</p>
+          <p>A Strength That&apos;s Soft. A Confidence That&apos;s Quiet.</p>
         </motion.div>
 
         <motion.div
