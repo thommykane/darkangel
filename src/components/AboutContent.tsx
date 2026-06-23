@@ -39,10 +39,6 @@ export default function AboutContent() {
         <motion.div {...fadeUp} className="space-y-4">
           <p>We believe strength can be soft.</p>
           <p>That confidence doesn&apos;t need to be loud.</p>
-          <p>
-            That wellness isn&apos;t about becoming someone else. It&apos;s about
-            coming home to yourself.
-          </p>
         </motion.div>
 
         <motion.div {...fadeUp} className="space-y-4">
