@@ -26,13 +26,13 @@ export default function Header() {
           </button>
 
           <Link href="/" className="shrink-0">
-            <div className="relative flex h-[60px] w-[60px] items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white">
+            <div className="relative flex h-[60px] w-[60px] items-center justify-center overflow-hidden rounded-full border border-white/20 bg-black">
               <Image
                 src="/logo/dark.angel.logo.png"
                 alt="Dark Angel Clothing"
                 fill
                 sizes="60px"
-                className="object-contain object-center p-2.5"
+                className="object-cover object-center scale-[1.6]"
                 priority
               />
             </div>
