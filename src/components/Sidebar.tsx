@@ -50,7 +50,7 @@ export default function Sidebar() {
               >
                 <div className="relative flex h-[125px] w-[125px] items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white">
                   <Image
-                    src="/logo/darklogospade.jpg"
+                    src="/logo/dark.angel.logo.png"
                     alt="Dark Angel Clothing"
                     fill
                     sizes="125px"

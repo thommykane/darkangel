@@ -28,7 +28,7 @@ export default function Header() {
           <Link href="/" className="shrink-0">
             <div className="relative flex h-[60px] w-[60px] items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white">
               <Image
-                src="/logo/darklogospade.jpg"
+                src="/logo/dark.angel.logo.png"
                 alt="Dark Angel Clothing"
                 fill
                 sizes="60px"
