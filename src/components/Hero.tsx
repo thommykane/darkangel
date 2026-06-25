@@ -11,15 +11,6 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-8 font-serif text-[clamp(2rem,9vw,5.5rem)] font-normal leading-[1.05] tracking-wide text-black"
-        >
-          Shylee wants a fucking burrito
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
           className="mb-6 text-[10px] font-medium uppercase tracking-[0.35em] text-secondary sm:text-xs"
         >
           Welcome to
