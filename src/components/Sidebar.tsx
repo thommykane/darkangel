@@ -48,13 +48,13 @@ export default function Sidebar() {
                 onClick={close}
                 className="mx-auto block w-fit"
               >
-                <div className="relative flex h-[125px] w-[125px] items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white">
+                <div className="relative flex h-[125px] w-[125px] items-center justify-center overflow-hidden rounded-full border border-white/20 bg-black">
                   <Image
-                    src="/logo/logo.jpg"
+                    src="/logo/dark.angel.logo.png"
                     alt="Dark Angel Clothing"
                     fill
                     sizes="125px"
-                    className="object-contain object-center scale-[1.45] p-1"
+                    className="object-cover object-center scale-[1.6]"
                   />
                 </div>
               </Link>
