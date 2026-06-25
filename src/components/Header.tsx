@@ -32,7 +32,7 @@ export default function Header() {
                 alt="Dark Angel Clothing"
                 fill
                 sizes="60px"
-                className="object-contain object-center p-2.5"
+                className="object-contain object-center scale-[1.45] p-0.5"
                 priority
               />
             </div>

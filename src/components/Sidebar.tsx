@@ -54,7 +54,7 @@ export default function Sidebar() {
                     alt="Dark Angel Clothing"
                     fill
                     sizes="125px"
-                    className="object-contain object-center p-5"
+                    className="object-contain object-center scale-[1.45] p-1"
                   />
                 </div>
               </Link>
