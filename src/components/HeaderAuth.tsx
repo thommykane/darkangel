@@ -27,7 +27,7 @@ export default function HeaderAuth() {
         href="/login"
         className="text-[10px] font-medium uppercase tracking-[0.25em] text-white transition-colors hover:text-white/70"
       >
-        Login
+        Sign In
       </Link>
     );
   }

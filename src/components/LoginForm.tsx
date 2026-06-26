@@ -26,7 +26,7 @@ export default function LoginForm() {
       const data = await res.json();
 
       if (!res.ok) {
-        setError(data.error ?? "Login failed.");
+        setError(data.error ?? "Sign in failed.");
         return;
       }
 

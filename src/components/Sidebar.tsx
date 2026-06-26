@@ -101,7 +101,7 @@ export default function Sidebar() {
                         onClick={close}
                         className="block border-b border-transparent py-4 text-sm font-medium uppercase tracking-[0.18em] text-white transition-colors hover:text-white/70"
                       >
-                        Login
+                        Sign In
                       </Link>
                     </li>
                   ) : (

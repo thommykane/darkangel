@@ -4,7 +4,7 @@ import LoginForm from "@/components/LoginForm";
 import { getSession } from "@/lib/auth";
 
 export const metadata: Metadata = {
-  title: "Login",
+  title: "Sign In",
 };
 
 export default async function LoginPage() {
@@ -20,7 +20,7 @@ export default async function LoginPage() {
           Admin Access
         </p>
         <h1 className="font-serif text-4xl tracking-wide text-black sm:text-5xl">
-          Login
+          Sign In
         </h1>
         <div className="mt-12">
           <LoginForm />

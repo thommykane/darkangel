@@ -56,7 +56,7 @@ export default function Header() {
           </ul>
         </nav>
 
-        {/* Right: Login / Admin / Logout */}
+        {/* Right: Sign In / Admin / Logout */}
         <div className="flex w-1/4 items-center justify-end">
           <HeaderAuth />
         </div>
