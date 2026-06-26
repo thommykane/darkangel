@@ -12,11 +12,20 @@ function getPool() {
   }
 
   if (!globalForPg.pgPool) {
+    const connectionString = process.env.DATABASE_URL;
+    const isLocal = connectionString.includes("localhost");
+
+    // pg v8+ treats sslmode=require as strict verify-full; Railway uses a cert
+    // chain that fails that check unless we opt into libpq-compatible SSL handling.
+    let url = connectionString;
+    if (!isLocal && !url.includes("uselibpqcompat=")) {
+      url += url.includes("?") ? "&" : "?";
+      url += "uselibpqcompat=true";
+    }
+
     globalForPg.pgPool = new Pool({
-      connectionString: process.env.DATABASE_URL,
-      ssl: process.env.DATABASE_URL.includes("localhost")
-        ? false
-        : { rejectUnauthorized: false },
+      connectionString: url,
+      ssl: isLocal ? false : { rejectUnauthorized: false },
     });
   }
 
