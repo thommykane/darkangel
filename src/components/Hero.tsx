@@ -53,6 +53,12 @@ export default function Hero() {
           >
             New Arrivals
           </Link>
+          <Link
+            href="/join"
+            className="min-w-[200px] border border-black bg-white px-8 py-3.5 text-[11px] font-medium uppercase tracking-[0.2em] text-black transition-all duration-300 hover:bg-black hover:text-white"
+          >
+            Join Our Email List
+          </Link>
         </motion.div>
       </div>
 

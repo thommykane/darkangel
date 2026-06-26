@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { navLinks } from "@/lib/constants";
 import { useSidebar } from "./SidebarContext";
+import HeaderAuth from "./HeaderAuth";
 
 export default function Header() {
   const { toggle } = useSidebar();
@@ -56,16 +56,9 @@ export default function Header() {
           </ul>
         </nav>
 
-        {/* Right: Spacer / Mobile label */}
+        {/* Right: Login / Admin / Logout */}
         <div className="flex w-1/4 items-center justify-end">
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="hidden text-[10px] font-medium uppercase tracking-[0.25em] text-white/70 sm:block"
-          >
-            Dark Angel
-          </motion.span>
+          <HeaderAuth />
         </div>
       </div>
     </header>
