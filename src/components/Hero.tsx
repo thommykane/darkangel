@@ -32,7 +32,7 @@ export default function Hero() {
           className="mx-auto mt-8 max-w-lg space-y-2 text-sm font-light tracking-wide text-secondary sm:text-base md:text-lg"
         >
           <p>Where Elegance Meets Edge</p>
-          <p>Timeless Comfort. Quiet Power.</p>
+          <p>Timeless comfort. Quiet Power.</p>
         </motion.div>
 
         <motion.div
