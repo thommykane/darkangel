@@ -8,14 +8,6 @@ export const metadata: Metadata = {
   title: "Email List",
 };
 
-function formatDate(value: string) {
-  return new Date(value).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
-}
-
 export default async function EmailListPage() {
   const session = await getSession();
   if (!session) {
@@ -69,15 +61,12 @@ export default async function EmailListPage() {
                 <th className="px-4 py-3 text-[10px] font-medium uppercase tracking-[0.18em] text-secondary">
                   Email
                 </th>
-                <th className="px-4 py-3 text-[10px] font-medium uppercase tracking-[0.18em] text-secondary">
-                  Joined
-                </th>
               </tr>
             </thead>
             <tbody>
               {subscribers.length === 0 ? (
                 <tr>
-                  <td colSpan={8} className="px-4 py-12 text-center text-secondary">
+                  <td colSpan={7} className="px-4 py-12 text-center text-secondary">
                     No subscribers yet.
                   </td>
                 </tr>
@@ -93,9 +82,6 @@ export default async function EmailListPage() {
                     <td className="px-4 py-3">{subscriber.zip ?? "—"}</td>
                     <td className="px-4 py-3">{subscriber.phone}</td>
                     <td className="px-4 py-3">{subscriber.email}</td>
-                    <td className="px-4 py-3 text-secondary">
-                      {formatDate(subscriber.created_at)}
-                    </td>
                   </tr>
                 ))
               )}
