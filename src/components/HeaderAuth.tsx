@@ -1,30 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
-interface SessionUser {
-  id: number;
-  name: string;
-  email: string;
-  mustChangePassword: boolean;
-}
+import { useSession } from "@/hooks/useSession";
 
 export default function HeaderAuth() {
   const router = useRouter();
-  const [user, setUser] = useState<SessionUser | null>(null);
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    fetch("/api/auth/session")
-      .then((res) => res.json())
-      .then((data) => {
-        setUser(data.user ?? null);
-        setLoaded(true);
-      })
-      .catch(() => setLoaded(true));
-  }, []);
+  const { user, loaded, setUser } = useSession();
 
   async function handleLogout() {
     await fetch("/api/auth/logout", { method: "POST" });
@@ -52,6 +34,13 @@ export default function HeaderAuth() {
 
   return (
     <div className="flex items-center gap-4 sm:gap-6">
+      <button
+        type="button"
+        onClick={handleLogout}
+        className="text-[10px] font-medium uppercase tracking-[0.25em] text-white transition-colors hover:text-white/70"
+      >
+        Logout
+      </button>
       {!user.mustChangePassword && (
         <Link
           href="/admin"
@@ -60,13 +49,6 @@ export default function HeaderAuth() {
           Admin
         </Link>
       )}
-      <button
-        type="button"
-        onClick={handleLogout}
-        className="text-[10px] font-medium uppercase tracking-[0.25em] text-white transition-colors hover:text-white/70"
-      >
-        Logout
-      </button>
     </div>
   );
 }

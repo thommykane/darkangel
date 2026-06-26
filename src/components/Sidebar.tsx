@@ -2,12 +2,24 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { navLinks } from "@/lib/constants";
+import { useSession } from "@/hooks/useSession";
 import { useSidebar } from "./SidebarContext";
 
 export default function Sidebar() {
   const { isOpen, close } = useSidebar();
+  const router = useRouter();
+  const { user, loaded, setUser } = useSession();
+
+  async function handleLogout() {
+    await fetch("/api/auth/logout", { method: "POST" });
+    setUser(null);
+    close();
+    router.push("/");
+    router.refresh();
+  }
 
   return (
     <AnimatePresence>
@@ -79,6 +91,45 @@ export default function Sidebar() {
                   </motion.li>
                 ))}
               </ul>
+
+              {loaded && (
+                <ul className="mt-8 space-y-1 border-t border-white/10 pt-8">
+                  {!user ? (
+                    <li>
+                      <Link
+                        href="/login"
+                        onClick={close}
+                        className="block border-b border-transparent py-4 text-sm font-medium uppercase tracking-[0.18em] text-white transition-colors hover:text-white/70"
+                      >
+                        Login
+                      </Link>
+                    </li>
+                  ) : (
+                    <>
+                      <li>
+                        <button
+                          type="button"
+                          onClick={handleLogout}
+                          className="block w-full border-b border-transparent py-4 text-left text-sm font-medium uppercase tracking-[0.18em] text-white transition-colors hover:text-white/70"
+                        >
+                          Logout
+                        </button>
+                      </li>
+                      {!user.mustChangePassword && (
+                        <li>
+                          <Link
+                            href="/admin"
+                            onClick={close}
+                            className="block border-b border-transparent py-4 text-sm font-medium uppercase tracking-[0.18em] text-white transition-colors hover:text-white/70"
+                          >
+                            Admin
+                          </Link>
+                        </li>
+                      )}
+                    </>
+                  )}
+                </ul>
+              )}
             </nav>
 
             <div className="border-t border-white/10 px-6 py-6">
