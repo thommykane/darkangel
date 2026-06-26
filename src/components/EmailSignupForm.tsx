@@ -1,14 +1,21 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { US_STATES } from "@/lib/us-states";
+
+const RecaptchaWidget = dynamic(() => import("@/components/RecaptchaField"), {
+  ssr: false,
+});
 
 const inputClassName =
   "w-full border border-border bg-white px-4 py-3 text-sm outline-none transition-colors focus:border-black";
 
 const labelClassName =
   "text-[11px] font-medium uppercase tracking-[0.2em] text-secondary";
+
+const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? "";
 
 export default function EmailSignupForm() {
   const [firstName, setFirstName] = useState("");
@@ -18,13 +25,26 @@ export default function EmailSignupForm() {
   const [zip, setZip] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const [recaptchaKey, setRecaptchaKey] = useState(0);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
+  function resetRecaptcha() {
+    setRecaptchaToken(null);
+    setRecaptchaKey((key) => key + 1);
+  }
+
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setError("");
+
+    if (!recaptchaToken) {
+      setError("Please complete the captcha.");
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -39,6 +59,7 @@ export default function EmailSignupForm() {
           zip,
           phone,
           email,
+          recaptchaToken,
         }),
       });
 
@@ -46,12 +67,14 @@ export default function EmailSignupForm() {
 
       if (!res.ok) {
         setError(data.error ?? "Unable to join the email list.");
+        resetRecaptcha();
         return;
       }
 
       setSuccess(true);
     } catch {
       setError("Unable to join the email list. Please try again.");
+      resetRecaptcha();
     } finally {
       setLoading(false);
     }
@@ -184,6 +207,16 @@ export default function EmailSignupForm() {
           className={inputClassName}
         />
       </div>
+
+      {siteKey && (
+        <div className="flex justify-center">
+          <RecaptchaWidget
+            key={recaptchaKey}
+            siteKey={siteKey}
+            onChange={(token) => setRecaptchaToken(token)}
+          />
+        </div>
+      )}
 
       <p className="text-xs leading-relaxed text-secondary">
         By hitting enter you agree to be notified by Dark Angel Clothing about new products and discounts.
