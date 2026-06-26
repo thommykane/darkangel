@@ -45,7 +45,7 @@ export default async function EmailListPage() {
         </p>
 
         <div className="mt-10 overflow-x-auto border border-border">
-          <table className="w-full min-w-[800px] text-left text-sm">
+          <table className="w-full min-w-[900px] text-left text-sm">
             <thead className="border-b border-border bg-[#fafafa]">
               <tr>
                 <th className="px-4 py-3 text-[10px] font-medium uppercase tracking-[0.18em] text-secondary">
@@ -55,7 +55,13 @@ export default async function EmailListPage() {
                   Last Name
                 </th>
                 <th className="px-4 py-3 text-[10px] font-medium uppercase tracking-[0.18em] text-secondary">
-                  City, State, Zip
+                  City
+                </th>
+                <th className="px-4 py-3 text-[10px] font-medium uppercase tracking-[0.18em] text-secondary">
+                  State
+                </th>
+                <th className="px-4 py-3 text-[10px] font-medium uppercase tracking-[0.18em] text-secondary">
+                  Zip
                 </th>
                 <th className="px-4 py-3 text-[10px] font-medium uppercase tracking-[0.18em] text-secondary">
                   Phone
@@ -71,7 +77,7 @@ export default async function EmailListPage() {
             <tbody>
               {subscribers.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-4 py-12 text-center text-secondary">
+                  <td colSpan={8} className="px-4 py-12 text-center text-secondary">
                     No subscribers yet.
                   </td>
                 </tr>
@@ -80,7 +86,11 @@ export default async function EmailListPage() {
                   <tr key={subscriber.id} className="border-b border-border last:border-b-0">
                     <td className="px-4 py-3">{subscriber.first_name}</td>
                     <td className="px-4 py-3">{subscriber.last_name}</td>
-                    <td className="px-4 py-3">{subscriber.city_state_zip}</td>
+                    <td className="px-4 py-3">
+                      {subscriber.city ?? subscriber.city_state_zip ?? "—"}
+                    </td>
+                    <td className="px-4 py-3">{subscriber.state ?? "—"}</td>
+                    <td className="px-4 py-3">{subscriber.zip ?? "—"}</td>
                     <td className="px-4 py-3">{subscriber.phone}</td>
                     <td className="px-4 py-3">{subscriber.email}</td>
                     <td className="px-4 py-3 text-secondary">

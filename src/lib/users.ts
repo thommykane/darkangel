@@ -57,7 +57,10 @@ export interface EmailSubscriber {
   id: number;
   first_name: string;
   last_name: string;
-  city_state_zip: string;
+  city: string | null;
+  state: string | null;
+  zip: string | null;
+  city_state_zip: string | null;
   phone: string;
   email: string;
   created_at: string;
@@ -66,18 +69,22 @@ export interface EmailSubscriber {
 export async function createEmailSubscriber(data: {
   firstName: string;
   lastName: string;
-  cityStateZip: string;
+  city: string;
+  state: string;
+  zip: string;
   phone: string;
   email: string;
 }) {
   const result = await query<EmailSubscriber>(
-    `INSERT INTO email_subscribers (first_name, last_name, city_state_zip, phone, email)
-     VALUES ($1, $2, $3, $4, $5)
+    `INSERT INTO email_subscribers (first_name, last_name, city, state, zip, phone, email)
+     VALUES ($1, $2, $3, $4, $5, $6, $7)
      RETURNING *`,
     [
       data.firstName,
       data.lastName,
-      data.cityStateZip,
+      data.city,
+      data.state,
+      data.zip,
       data.phone,
       data.email.toLowerCase(),
     ]

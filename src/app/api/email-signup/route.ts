@@ -7,13 +7,22 @@ export async function POST(request: Request) {
 
     const firstName = String(body.firstName ?? "").trim();
     const lastName = String(body.lastName ?? "").trim();
-    const cityStateZip = String(body.cityStateZip ?? "").trim();
+    const city = String(body.city ?? "").trim();
+    const state = String(body.state ?? "").trim();
+    const zip = String(body.zip ?? "").trim();
     const phone = String(body.phone ?? "").trim();
     const email = String(body.email ?? "").trim().toLowerCase();
 
-    if (!firstName || !lastName || !cityStateZip || !phone || !email) {
+    if (!firstName || !lastName || !city || !state || !zip || !phone || !email) {
       return NextResponse.json(
         { error: "All fields are required." },
+        { status: 400 }
+      );
+    }
+
+    if (!/^\d{5}(-\d{4})?$/.test(zip)) {
+      return NextResponse.json(
+        { error: "Please enter a valid ZIP code." },
         { status: 400 }
       );
     }
@@ -28,7 +37,9 @@ export async function POST(request: Request) {
     await createEmailSubscriber({
       firstName,
       lastName,
-      cityStateZip,
+      city,
+      state,
+      zip,
       phone,
       email,
     });

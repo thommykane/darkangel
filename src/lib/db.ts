@@ -53,12 +53,19 @@ export async function initializeDatabase() {
           id SERIAL PRIMARY KEY,
           first_name TEXT NOT NULL,
           last_name TEXT NOT NULL,
-          city_state_zip TEXT NOT NULL,
+          city TEXT,
+          state TEXT,
+          zip TEXT,
+          city_state_zip TEXT,
           phone TEXT NOT NULL,
           email TEXT NOT NULL,
           created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
         )
       `);
+
+      await pool.query(`ALTER TABLE email_subscribers ADD COLUMN IF NOT EXISTS city TEXT`);
+      await pool.query(`ALTER TABLE email_subscribers ADD COLUMN IF NOT EXISTS state TEXT`);
+      await pool.query(`ALTER TABLE email_subscribers ADD COLUMN IF NOT EXISTS zip TEXT`);
     })();
   }
 

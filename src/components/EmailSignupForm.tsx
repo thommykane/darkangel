@@ -2,11 +2,20 @@
 
 import { FormEvent, useState } from "react";
 import Link from "next/link";
+import { US_STATES } from "@/lib/us-states";
+
+const inputClassName =
+  "w-full border border-border bg-white px-4 py-3 text-sm outline-none transition-colors focus:border-black";
+
+const labelClassName =
+  "text-[11px] font-medium uppercase tracking-[0.2em] text-secondary";
 
 export default function EmailSignupForm() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [cityStateZip, setCityStateZip] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zip, setZip] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -25,7 +34,9 @@ export default function EmailSignupForm() {
         body: JSON.stringify({
           firstName,
           lastName,
-          cityStateZip,
+          city,
+          state,
+          zip,
           phone,
           email,
         }),
@@ -67,7 +78,7 @@ export default function EmailSignupForm() {
     <form onSubmit={handleSubmit} className="mx-auto w-full max-w-lg space-y-5">
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div className="space-y-2">
-          <label htmlFor="firstName" className="text-[11px] font-medium uppercase tracking-[0.2em] text-secondary">
+          <label htmlFor="firstName" className={labelClassName}>
             First Name
           </label>
           <input
@@ -76,11 +87,11 @@ export default function EmailSignupForm() {
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             required
-            className="w-full border border-border bg-white px-4 py-3 text-sm outline-none transition-colors focus:border-black"
+            className={inputClassName}
           />
         </div>
         <div className="space-y-2">
-          <label htmlFor="lastName" className="text-[11px] font-medium uppercase tracking-[0.2em] text-secondary">
+          <label htmlFor="lastName" className={labelClassName}>
             Last Name
           </label>
           <input
@@ -89,27 +100,65 @@ export default function EmailSignupForm() {
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required
-            className="w-full border border-border bg-white px-4 py-3 text-sm outline-none transition-colors focus:border-black"
+            className={inputClassName}
           />
         </div>
       </div>
 
       <div className="space-y-2">
-        <label htmlFor="cityStateZip" className="text-[11px] font-medium uppercase tracking-[0.2em] text-secondary">
-          City, State, Zip
+        <label htmlFor="city" className={labelClassName}>
+          City
         </label>
         <input
-          id="cityStateZip"
+          id="city"
           type="text"
-          value={cityStateZip}
-          onChange={(e) => setCityStateZip(e.target.value)}
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
           required
-          className="w-full border border-border bg-white px-4 py-3 text-sm outline-none transition-colors focus:border-black"
+          className={inputClassName}
         />
       </div>
 
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div className="space-y-2">
+          <label htmlFor="state" className={labelClassName}>
+            State
+          </label>
+          <select
+            id="state"
+            value={state}
+            onChange={(e) => setState(e.target.value)}
+            required
+            className={inputClassName}
+          >
+            <option value="">Select state</option>
+            {US_STATES.map((usState) => (
+              <option key={usState.value} value={usState.value}>
+                {usState.label}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="space-y-2">
+          <label htmlFor="zip" className={labelClassName}>
+            Zip
+          </label>
+          <input
+            id="zip"
+            type="text"
+            inputMode="numeric"
+            value={zip}
+            onChange={(e) => setZip(e.target.value)}
+            required
+            pattern="\d{5}(-\d{4})?"
+            title="Enter a 5-digit ZIP code or ZIP+4"
+            className={inputClassName}
+          />
+        </div>
+      </div>
+
       <div className="space-y-2">
-        <label htmlFor="phone" className="text-[11px] font-medium uppercase tracking-[0.2em] text-secondary">
+        <label htmlFor="phone" className={labelClassName}>
           Phone Number
         </label>
         <input
@@ -118,12 +167,12 @@ export default function EmailSignupForm() {
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           required
-          className="w-full border border-border bg-white px-4 py-3 text-sm outline-none transition-colors focus:border-black"
+          className={inputClassName}
         />
       </div>
 
       <div className="space-y-2">
-        <label htmlFor="email" className="text-[11px] font-medium uppercase tracking-[0.2em] text-secondary">
+        <label htmlFor="email" className={labelClassName}>
           Email
         </label>
         <input
@@ -132,7 +181,7 @@ export default function EmailSignupForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="w-full border border-border bg-white px-4 py-3 text-sm outline-none transition-colors focus:border-black"
+          className={inputClassName}
         />
       </div>
 
