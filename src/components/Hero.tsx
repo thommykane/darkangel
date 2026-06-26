@@ -31,8 +31,8 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
           className="mx-auto mt-8 max-w-lg space-y-2 text-sm font-light tracking-wide text-secondary sm:text-base md:text-lg"
         >
-          <p>Where Elegance Meets Edge</p>
-          <p>Timeless comfort. Quiet Power.</p>
+          <p>Where elegance meets edge.</p>
+          <p>Timeless comfort. Quiet power.</p>
         </motion.div>
 
         <motion.div
